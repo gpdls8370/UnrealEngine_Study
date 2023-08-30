@@ -1,0 +1,14 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/StarterContent/Blueprints/Blueprint_CeilingLight.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/StarterContent/Maps/Minimal_Default.umap",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Maps/Minimal_Default.umap"
+			]
+		}
+	]
+}
