@@ -1,0 +1,18 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"D:/Unreal Engine/Projects/IntroProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/U4/IZHONE4FTXIO9BCERWCJJH.uasset",
+				"D:/Unreal Engine/Projects/IntroProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/42/PGM2KA2IIB4JS6WQOLZKVQ.uasset",
+				"D:/Unreal Engine/Projects/IntroProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/B/CT/Z469D1ETAZAR6RLNR55KI1.uasset",
+				"D:/Unreal Engine/Projects/IntroProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/90/WVC6WBF487FWM2SF3GQV3H.uasset",
+				"D:/Unreal Engine/Projects/IntroProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/AB/R30N9N4CPCUOHTIJFUD3RE.uasset",
+				"D:/Unreal Engine/Projects/IntroProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/4K/J5IHY1ZDWX5506Y8KAZ4ZK.uasset",
+				"D:/Unreal Engine/Projects/IntroProject/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/SL/20K7X12GETPDX62DKBPDUK.uasset"
+			]
+		}
+	]
+}
