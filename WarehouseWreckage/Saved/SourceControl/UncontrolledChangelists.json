@@ -8,7 +8,27 @@
 				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/StarterContent/Blueprints/Blueprint_CeilingLight.uasset",
 				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/StarterContent/Maps/Minimal_Default.umap",
 				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Maps/Minimal_Default.umap",
-				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Class/BP_Projectile.uasset"
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Class/BP_Projectile.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Instance/LI_Boxs.umap",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Instance/NewMap.umap",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/NewMap/E/CF/WKKVJ6QULIT1C3E0F98DGQ.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Instance/BPP_NewMap.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/LI_Boxs/9/LS/7MY2L1XTF68F97F2RNROVR.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/LI_Boxs/E/AG/0MUWO1LR41625RQ2FBIF61.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/LI_Boxs/A/2Y/K9MNNQ65UCTZ7QBXDS41T0.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Instance/BP_LI_Boxs.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Instance/Boxs.umap",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/Boxs/A/HX/QO77B119AUVH27RKWOEWST.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/Boxs/1/CJ/PPVXDT1KZHGGZNZRLFX0CQ.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/Boxs/A/NQ/RVOKTY7Q4R2ALKEEG3JQOJ.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Instance/BP_Boxs.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/StarterContent/Props/Materials/M_Chair.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/StarterContent/Props/Materials/M_TableRound.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/LI_Boxs/2/RR/18AV0LCBC0FK7XM3KTM9V2.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/LI_Boxs/8/5M/NLTQV5UVZZXU3JF7GLTFTI.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/__ExternalActors__/Instance/LI_Boxs/7/MU/753RRQGUXYQM9HRO5GHGDY.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Instance/BP_Boxs.uasset",
+				"D:/Unreal Engine/Projects/WarehouseWreckage/Content/Class/BP_Boxs.uasset"
 			]
 		}
 	]
