@@ -15,6 +15,8 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
+
+	StartLocation = GetActorLocation();
 }
 
 // Called every frame
@@ -22,8 +24,25 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	MyVector.Y++;
+	// 플랫폼 앞으로 이동
+		// 현재 위치 얻기
+	FVector CurrentLocation = GetActorLocation();
+		// 앞쪽으로 벡터 더해주기
+	CurrentLocation += PlatformVelocity * DeltaTime;
+		// 위치 지정하기
+	SetActorLocation(CurrentLocation);
 
-	SetActorLocation(MyVector);
+	// 플랫폼이 너무 멀리 가면 방향을 반대로
+		// 플랫폼 이동한 거리 확인
+	float dist = FVector::Dist(StartLocation, CurrentLocation);
+		// 거리가 멀면 방향을 반대로
+	if (dist > MoveDistance)
+	{
+		FVector MoveDiraction = PlatformVelocity.GetSafeNormal();
+		StartLocation = StartLocation + MoveDiraction * MoveDistance;
+		SetActorLocation(StartLocation);
+
+		PlatformVelocity = -PlatformVelocity;
+	}
 }
 
