@@ -1,6 +1,0 @@
-﻿  Using bundled DotNet SDK version: 6.0.302
-  Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" ObstacleAssaultEditor Win64 Development -Project="D:\Unreal Engine\Projects\ObstacleAssault\ObstacleAssault\ObstacleAssault.uproject" -WaitMutex -FromMsBuild
-  Log file: C:\Users\ms837\AppData\Local\UnrealBuildTool\Log.txt
-  Creating makefile for ObstacleAssaultEditor (no existing makefile)
-  Target is up to date
-  Total execution time: 1.90 seconds
