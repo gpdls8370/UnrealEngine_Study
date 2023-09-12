@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "MovingPlatform.h"
 
 // Sets default values
@@ -17,6 +16,10 @@ void AMovingPlatform::BeginPlay()
 	Super::BeginPlay();
 
 	StartLocation = GetActorLocation();
+
+	FString MyString = "My String Value";
+
+	UE_LOG(LogTemp , Display , TEXT("Here's My String : %s"), *MyString);
 }
 
 // Called every frame
@@ -38,6 +41,10 @@ void AMovingPlatform::Tick(float DeltaTime)
 		// 거리가 멀면 방향을 반대로
 	if (dist > MoveDistance)
 	{
+		FString text = GetName() + " overshoot " + FString::SanitizeFloat(dist - MoveDistance);
+
+		UE_LOG(LogTemp , Display , TEXT("%s") , *text);
+
 		FVector MoveDiraction = PlatformVelocity.GetSafeNormal();
 		StartLocation = StartLocation + MoveDiraction * MoveDistance;
 		SetActorLocation(StartLocation);
