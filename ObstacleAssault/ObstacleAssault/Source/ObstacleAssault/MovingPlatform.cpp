@@ -27,29 +27,36 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// 플랫폼 앞으로 이동
-		// 현재 위치 얻기
-	FVector CurrentLocation = GetActorLocation();
-		// 앞쪽으로 벡터 더해주기
-	CurrentLocation += PlatformVelocity * DeltaTime;
-		// 위치 지정하기
-	SetActorLocation(CurrentLocation);
+	MovePlatform(DeltaTime);
+	RotatePlatform(DeltaTime);
+}
 
-	// 플랫폼이 너무 멀리 가면 방향을 반대로
-		// 플랫폼 이동한 거리 확인
-	float dist = FVector::Dist(StartLocation, CurrentLocation);
-		// 거리가 멀면 방향을 반대로
-	if (dist > MoveDistance)
+void AMovingPlatform::MovePlatform(float DeltaTime)
+{
+	if (ShouldPlatformReturn())
 	{
-		FString text = GetName() + " overshoot " + FString::SanitizeFloat(dist - MoveDistance);
-
-		UE_LOG(LogTemp , Display , TEXT("%s") , *text);
-
 		FVector MoveDiraction = PlatformVelocity.GetSafeNormal();
 		StartLocation = StartLocation + MoveDiraction * MoveDistance;
 		SetActorLocation(StartLocation);
-
 		PlatformVelocity = -PlatformVelocity;
+	}
+	else 
+	{
+		FVector CurrentLocation = GetActorLocation();
+		CurrentLocation += PlatformVelocity * DeltaTime;
+		SetActorLocation(CurrentLocation);
 	}
 }
 
+void AMovingPlatform::RotatePlatform(float DeltaTime)
+{
+	AddActorLocalRotation(RotationVelocity * DeltaTime);
+}
+
+bool AMovingPlatform::ShouldPlatformReturn() const {
+	return GetDistanceMoved() > MoveDistance;
+}
+
+float AMovingPlatform::GetDistanceMoved() const {
+	return FVector::Dist(StartLocation , GetActorLocation());
+}
