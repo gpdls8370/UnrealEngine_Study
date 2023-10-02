@@ -19,8 +19,7 @@ void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
 }
 
 
@@ -29,14 +28,54 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	FHitResult Hits;
+	if (PhysicsHandle == nullptr) return;
+
+	if (PhysicsHandle->GetGrabbedComponent() != nullptr) {
+		PhysicsHandle->SetTargetLocationAndRotation(
+	GetComponentLocation() + GetForwardVector() * HoldDistance ,
+	GetComponentRotation()
+		);
+	}
+}
+
+void UGrabber::Grab()
+{
+	if (PhysicsHandle == nullptr) return;
+
+	FHitResult Hit;
+	bool HasHit = GetGrabbableInReach(Hit);
+	if (HasHit) {
+		UPrimitiveComponent* HitComponent = Hit.GetComponent();
+		HitComponent->WakeAllRigidBodies();
+		PhysicsHandle->GrabComponentAtLocationWithRotation(
+			HitComponent ,
+			NAME_None,
+			Hit.ImpactPoint ,
+			GetComponentRotation()
+		);
+	}
+}
+
+void UGrabber::Release(){
+	if (PhysicsHandle == nullptr) return;
+
+	if (PhysicsHandle->GetGrabbedComponent() != nullptr){
+		PhysicsHandle->GetGrabbedComponent()->WakeAllRigidBodies();
+		PhysicsHandle->ReleaseComponent();
+	}
+}
+
+bool UGrabber::GetGrabbableInReach(FHitResult& OutHit) const {
 	FVector StartPos = GetComponentLocation();
 	FVector EndPos = StartPos + GetForwardVector() * MaxGrabDistance;
 
-	DrawDebugLine(GetWorld() , StartPos , EndPos , FColor::Red);
+	//DrawDebugLine(GetWorld() , StartPos , EndPos , FColor::Red);
 
-	//GetWorld()->LineTraceSingleByChannel(Hits , StartPos , EndPos , ECC_EngineTraceChannel1);
-
-	//UE_LOG(LogTemp , Display , TEXT("%s") , *(Hits.GetActor()->GetActorNameOrLabel()));
+	return GetWorld()->SweepSingleByChannel(
+		OutHit ,
+		StartPos , EndPos ,
+		FQuat::Identity ,
+		ECC_GameTraceChannel2 ,
+		FCollisionShape::MakeSphere(GrabRadius)
+	);
 }
-
