@@ -2,7 +2,6 @@
 
 
 #include "Respawn.h"
-#include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties
 URespawn::URespawn()
@@ -25,10 +24,9 @@ void URespawn::BeginPlay()
 }
 
 
-// Called every frame
-void URespawn::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void URespawn::TickComponent(float DeltaTime , ELevelTick TickType , FActorComponentTickFunction* ThisTickFunction)
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	Super::TickComponent(DeltaTime , TickType , ThisTickFunction);
 
 	NowTime += DeltaTime;
 

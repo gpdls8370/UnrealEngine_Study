@@ -36,7 +36,7 @@ void AMovingPlatform::MovePlatform(float DeltaTime)
 	if (ShouldPlatformReturn())
 	{
 		FVector MoveDiraction = PlatformVelocity.GetSafeNormal();
-		StartLocation = StartLocation + MoveDiraction * MoveDistance;
+		StartLocation += MoveDiraction * MoveDistance;
 		SetActorLocation(StartLocation);
 		PlatformVelocity = -PlatformVelocity;
 	}

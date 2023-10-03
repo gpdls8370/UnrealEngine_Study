@@ -3,12 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/SceneComponent.h"
+#include "Components/ActorComponent.h"
 #include "Respawn.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class OBSTACLEASSAULT_API URespawn : public USceneComponent
+class OBSTACLEASSAULT_API URespawn : public UActorComponent
 {
 	GENERATED_BODY()
 
@@ -31,6 +31,4 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float RespawnTime;
-
-	void StopActor();
 };
