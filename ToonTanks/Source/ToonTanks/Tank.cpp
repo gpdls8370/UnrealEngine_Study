@@ -31,7 +31,7 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	PlayerController = Cast<APlayerController>(GetController());
 }
 
 // Called every frame
@@ -39,10 +39,10 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (PlayerControllerRef)
+	if (PlayerController)
 	{
 		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(
+		PlayerController->GetHitResultUnderCursor(
 			ECollisionChannel::ECC_Visibility,
 			false,
 			HitResult);
@@ -50,6 +50,20 @@ void ATank::Tick(float DeltaTime)
 		RotateTurret(HitResult.ImpactPoint);
 	}
 
+}
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+
+	if (PlayerController)
+	{
+		DisableInput(PlayerController);
+		PlayerController->bShowMouseCursor = false;
+	}
 }
 
 void ATank::Move(float Value)

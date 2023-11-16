@@ -15,6 +15,9 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+	// 폰이 죽을 때 파괴되는 동작 
+	virtual void HandleDestruction();
+
 protected:
 	void RotateTurret(FVector LootAtTarget);
 	void Fire();

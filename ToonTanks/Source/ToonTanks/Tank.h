@@ -21,6 +21,10 @@ public:
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void HandleDestruction() override;
+
+	APlayerController* GetPlayerController() const { return PlayerController; }
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -40,5 +44,5 @@ private:
 	void Move(float Value);
 	void Turn(float Value);
 
-	APlayerController* PlayerControllerRef;
+	APlayerController* PlayerController;
 };
