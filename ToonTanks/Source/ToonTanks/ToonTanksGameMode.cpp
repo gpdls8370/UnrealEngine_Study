@@ -5,27 +5,73 @@
 #include <Kismet/GameplayStatics.h>
 #include "BasePawn.h"
 #include "Tank.h"
+#include "ToonTanksPlayerController.h"
+#include "Tower.h"
 
 void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 {
-	if (ABasePawn* BasePawn = Cast<ABasePawn>(DeadActor))
-	{
-		BasePawn->HandleDestruction();
-	}
-	 
 	if (DeadActor == Tank)
 	{
-		if (APlayerController* TankController = Tank->GetPlayerController())
+		Tank->HandleDestruction();
+		if (ToonTanksPlayerController)
 		{
-			Tank->DisableInput(TankController);
-			TankController->bShowMouseCursor = false;
+			ToonTanksPlayerController->SetPlayerEnabledState(false);
+		}
+		GameOver(false);
+	}
+	else if (ATower* DestroyedTower = Cast<ATower>(DeadActor))
+	{
+		DestroyedTower->HandleDestruction();
+		TargetTowers--;
+		if (TargetTowers == 0)
+		{
+			GameOver(true);
 		}
 	}
 }
+
 
 void AToonTanksGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
+	HandleGameStart();
 }
+
+void AToonTanksGameMode::HandleGameStart()
+{
+	TargetTowers = GetTargetTowerCount();
+	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
+	ToonTanksPlayerController = Cast<AToonTanksPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
+
+	StartGame();
+
+	if (ToonTanksPlayerController)
+	{
+		// 시작 시 인풋 끄기
+		ToonTanksPlayerController->SetPlayerEnabledState(false);
+
+		// Timer로 StartDelay(3초) 후에 인풋 켜주기
+		FTimerHandle PlayerEnableTimerHandle;
+		FTimerDelegate PlayerEnableTimerDelegate = FTimerDelegate::CreateUObject(
+			ToonTanksPlayerController,
+			&AToonTanksPlayerController::SetPlayerEnabledState,
+			true
+		);
+
+		GetWorldTimerManager().SetTimer(
+			PlayerEnableTimerHandle,
+			PlayerEnableTimerDelegate,
+			StartDelay,
+			false
+		);
+	}
+}
+
+int32 AToonTanksGameMode::GetTargetTowerCount() const
+{
+	TArray<AActor*> Towers;
+	UGameplayStatics::GetAllActorsOfClass(this, ATower::StaticClass(), Towers);
+	return Towers.Num();
+}
+

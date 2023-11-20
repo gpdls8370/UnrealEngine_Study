@@ -16,7 +16,7 @@ public:
 	ABasePawn();
 
 	// 폰이 죽을 때 파괴되는 동작 
-	virtual void HandleDestruction();
+	void HandleDestruction();
 
 protected:
 	void RotateTurret(FVector LootAtTarget);
@@ -37,4 +37,13 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	TSubclassOf<class AProjectile> ProjectileClass;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystem* DeathParticles;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* DeathSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<UCameraShakeBase> DeathCameraShakeClass;
 };

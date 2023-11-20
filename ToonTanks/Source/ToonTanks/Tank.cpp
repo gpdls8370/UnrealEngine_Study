@@ -59,11 +59,7 @@ void ATank::HandleDestruction()
 	SetActorHiddenInGame(true);
 	SetActorTickEnabled(false);
 
-	if (PlayerController)
-	{
-		DisableInput(PlayerController);
-		PlayerController->bShowMouseCursor = false;
-	}
+	bAlive = false;
 }
 
 void ATank::Move(float Value)

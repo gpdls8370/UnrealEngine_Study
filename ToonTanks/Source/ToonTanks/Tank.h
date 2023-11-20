@@ -21,9 +21,9 @@ public:
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	virtual void Tick(float DeltaTime) override;
 
-	virtual void HandleDestruction() override;
+	void HandleDestruction();
 
-	APlayerController* GetPlayerController() const { return PlayerController; }
+	bool bAlive = true;
 
 protected:
 	virtual void BeginPlay() override;
