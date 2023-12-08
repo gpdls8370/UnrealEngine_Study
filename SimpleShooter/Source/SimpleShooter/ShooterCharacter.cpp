@@ -59,4 +59,7 @@ void AShooterCharacter::LookRightRate(float AxisValue)
 	AddControllerYawInput(AxisValue * RotationRate * GetWorld()->DeltaTimeSeconds);	
 }
 
-
+void AShooterCharacter::Shoot()
+{
+	UE_LOG(LogTemp, Display, TEXT("Shoot"));
+}
